@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pomodoro/app/core/theme/theme_settings.dart';
 import 'package:pomodoro/app/core/utils/app_routes.dart';
 import 'package:pomodoro/app/views/login_screen/login.dart';
+import 'package:pomodoro/app/views/start_screen/start.dart';
 
  GlobalKey <NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
  GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey 
@@ -19,6 +20,7 @@ class Pomodoro extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       routes: {
+        AppRoutes.startScreen:(context) => const Start(),
         AppRoutes.loginScreen:(context) => const Login(),
       },
     );

@@ -42,7 +42,7 @@ class TextStyles {
   );
 
   TextStyle get title => secondaryBold.copyWith(  
-    fontSize: 30,
+    fontSize: 25,
   );
 
   TextStyle get titleSecondary => secondaryBold.copyWith(  
