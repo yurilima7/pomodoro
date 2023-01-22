@@ -55,30 +55,50 @@ class _StartState extends State<Start> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     
                     children: [
-                      Text(
-                        titles[i],
-                        style: TextStyles().title,
-                        textAlign: TextAlign.center,
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+
+                          children: [
+                            Text(
+                              titles[i],
+                              style: TextStyles().title,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
 
                       SizedBox(height: constraint.maxHeight * .1),
                 
-                      SvgPicture.asset(
-                        images[i],
-                        width: constraint.maxWidth * .9,
-                        fit: BoxFit.contain,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            images[i],
+                            width: constraint.maxWidth * .9,
+                            fit: BoxFit.contain,
+                          ),
+                        ],
                       ),
                 
                       SizedBox(height: constraint.maxHeight * .1),
 
-                      Button(
-                        action: i < 2 ? () {
-                          setState(() {
-                            i += 1;
-                          });
-                        }
-                        :() => NavigatorRoutes().loginScreen(),
-                        title: buttonTitles[i],
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Button(
+                              action: i < 2 ? () {
+                                setState(() {
+                                  i += 1;
+                                });
+                              }
+                              :() => NavigatorRoutes().loginScreen(),
+                              title: buttonTitles[i],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
