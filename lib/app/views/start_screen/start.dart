@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pomodoro/app/core/styles/text_styles.dart';
+import 'package:pomodoro/app/core/utils/navigator_routes.dart';
 import 'package:pomodoro/app/core/widgets/button.dart';
 
 class Start extends StatefulWidget {
@@ -71,11 +72,12 @@ class _StartState extends State<Start> {
                       SizedBox(height: constraint.maxHeight * .1),
 
                       Button(
-                        action: () {
+                        action: i < 2 ? () {
                           setState(() {
                             i += 1;
                           });
-                        },
+                        }
+                        :() => NavigatorRoutes().loginScreen(),
                         title: buttonTitles[i],
                       ),
                     ],

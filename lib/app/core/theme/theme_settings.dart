@@ -20,6 +20,8 @@ class ThemeSettings {
 
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: TextStyles().formText,
+      hintStyle: TextStyles().litteText,
+      floatingLabelBehavior: FloatingLabelBehavior.never,
 
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(20.0),
@@ -35,7 +37,10 @@ class ThemeSettings {
           width: 3,
           color: ColorsStyles.secondary,
         ),
-      ), 
+      ),
+
+      prefixIconColor: ColorsStyles.white,
+      suffixIconColor: ColorsStyles.white,
     ),
 
     cardTheme: CardTheme(
