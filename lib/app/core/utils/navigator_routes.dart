@@ -9,4 +9,11 @@ class NavigatorRoutes {
       (route) => false,
     );
   }
+
+  void registerScreen() {
+    navigatorKey.currentState!.pushNamedAndRemoveUntil(
+      AppRoutes.registerScreen,
+      (route) => false,
+    );
+  }
 }

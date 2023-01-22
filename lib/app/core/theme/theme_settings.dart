@@ -49,6 +49,10 @@ class ThemeSettings {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
     ),
 
+    appBarTheme: const AppBarTheme(
+      elevation: 0,    
+    ),
+
     scaffoldBackgroundColor: ColorsStyles.primary,
   );
 }

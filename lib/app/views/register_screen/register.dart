@@ -3,14 +3,14 @@ import 'package:pomodoro/app/core/styles/text_styles.dart';
 import 'package:pomodoro/app/core/utils/navigator_routes.dart';
 import 'package:pomodoro/app/core/widgets/button.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   bool isVisibility = true;
 
   @override
@@ -47,7 +47,7 @@ class _LoginState extends State<Login> {
                             
                             children: [
                               Text(
-                                'Seja Bem-Vindo',
+                                'Crie uma conta',
                                 style: TextStyles().title,
                               ),
                             ],
@@ -61,6 +61,22 @@ class _LoginState extends State<Login> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             
                             children: [
+                              TextFormField(
+                                style: TextStyles().formText,
+                                keyboardType: TextInputType.text,
+                            
+                                decoration: const InputDecoration(
+                                  label: Text('Nome de usuário'),
+                                  hintText: 'Digite seu usuário',
+                                  prefixIcon: Icon(
+                                    Icons.account_circle_outlined,
+                                    size: 32,
+                                  ),
+                                ),
+                              ),
+
+                              const SizedBox(height: 10.0,),
+
                               TextFormField(
                                 style: TextStyles().formText,
                                 keyboardType: TextInputType.text,
@@ -100,16 +116,6 @@ class _LoginState extends State<Login> {
                                   
                                 ),
                               ),
-                            
-                              const SizedBox(height: 10.0,),
-                              
-                              TextButton(
-                                child: Text(
-                                  'Esqueci a senha',
-                                  style: TextStyles().formText,
-                                ),        
-                                onPressed: () {},
-                              ),
                             ],
                           ),
                         ),
@@ -118,14 +124,14 @@ class _LoginState extends State<Login> {
                           mainAxisAlignment: MainAxisAlignment.end,
 
                           children: [
-                            Button(action: () {}, title: 'Entrar'),
+                            Button(action: () {}, title: 'Registrar'),
                             
                             TextButton(
                               child: Text(
-                                'Crie uma conta',
+                                'Possui uma conta? Entre agora',
                                 style: TextStyles().formText,
                               ),        
-                              onPressed: () => NavigatorRoutes().registerScreen(),
+                              onPressed: () => NavigatorRoutes().loginScreen(),
                             ),
                           ],
                         ),
