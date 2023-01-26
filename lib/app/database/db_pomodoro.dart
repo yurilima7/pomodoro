@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -24,17 +22,13 @@ class DbPomodoro {
   }
 
   Future<void> _createDB(Database db, int newVersion) async {
-    try {
-      List<String> queryes = [
-        'CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, userName TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL)',
-        'CREATE TABLE activities (id INTEGER PRIMARY KEY AUTOINCREMENT, idUser INTEGER NOT NULL, name TEXT NOT NULL, focusTime TEXT NOT NULL, breakTime TEXT NOT NULL, breakActivity TEXT NOT NULL)',
-      ];
+    List<String> queryes = [
+      'CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, userName TEXT NOT NULL, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL)',
+      'CREATE TABLE activities (id INTEGER PRIMARY KEY AUTOINCREMENT, idUser INTEGER NOT NULL, name TEXT NOT NULL, focusTime TEXT NOT NULL, breakTime TEXT NOT NULL, breakActivity TEXT NOT NULL)',
+    ];
 
-      for (String query in queryes) {
-        await db.execute(query);
-      }
-    } on Exception catch (e) {
-      log(e.toString());
+    for (String query in queryes) {
+      await db.execute(query);
     }
   }
 
@@ -43,9 +37,15 @@ class DbPomodoro {
     return await db!.query(table);
   }
 
-  Future<List<Map<String, dynamic>>> getUser(String table, String email) async {
+  Future<List<Map<String, dynamic>>> getUser(
+      String table, String email, String password) async {
+
     final db = await database;
-    return await db!.query(table, where: "email = ?", whereArgs: [email]);
+    return await db!.query(
+      table,
+      where: "email = ? and password = ?",
+      whereArgs: [email, password],
+    );
   }
 
   Future<void> insert(String table, Map<String, dynamic> data) async {

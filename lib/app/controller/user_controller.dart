@@ -1,9 +1,7 @@
-import 'package:pomodoro/app/models/user.dart';
-
 abstract class UserController {
   Future<void> login(String email, String password);
   Future<void> logout();
-  Future<void> registerUser(User user);
-  Future<void> updateUser(User user);
-  Future<void> deleteUser(User user);
+  Future<void> registerUser(String email, String password, String userName);
+  Future<void> updateUser(String email, String password, String userName, int id);
+  Future<void> deleteUser(int id);
 }

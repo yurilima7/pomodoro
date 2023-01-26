@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/controller/user_controller_impl.dart';
 import 'package:pomodoro/app/core/styles/text_styles.dart';
 import 'package:pomodoro/app/core/utils/navigator_routes.dart';
 import 'package:pomodoro/app/core/widgets/button.dart';
+import 'package:provider/provider.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -15,6 +17,10 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    final userNameEC = TextEditingController();
+    final emailEC = TextEditingController();
+    final passwordEC = TextEditingController();
+
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       
@@ -64,6 +70,7 @@ class _RegisterState extends State<Register> {
                               TextFormField(
                                 style: TextStyles().formText,
                                 keyboardType: TextInputType.text,
+                                controller: userNameEC,
                             
                                 decoration: const InputDecoration(
                                   label: Text('Nome de usuário'),
@@ -80,6 +87,7 @@ class _RegisterState extends State<Register> {
                               TextFormField(
                                 style: TextStyles().formText,
                                 keyboardType: TextInputType.text,
+                                controller: emailEC,
                             
                                 decoration: const InputDecoration(
                                   label: Text('E-Mail'),
@@ -94,6 +102,7 @@ class _RegisterState extends State<Register> {
                                 style: TextStyles().formText,
                                 keyboardType: TextInputType.text,
                                 obscureText: isVisibility,
+                                controller: passwordEC,
                                 
                                 decoration: InputDecoration(
                                   label: const Text('Senha'),
@@ -124,7 +133,18 @@ class _RegisterState extends State<Register> {
                           mainAxisAlignment: MainAxisAlignment.end,
 
                           children: [
-                            Button(action: () {}, title: 'Registrar'),
+                            Consumer<UserControllerImpl>(
+                              builder: (context, user, child) => Button(
+                                action: () {
+                                  user.registerUser(
+                                    emailEC.text,
+                                    passwordEC.text,
+                                    userNameEC.text,
+                                  );
+                                },
+                                title: 'Registrar',
+                              ),
+                            ),
                             
                             TextButton(
                               child: Text(

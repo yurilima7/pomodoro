@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/controller/user_controller_impl.dart';
 import 'package:pomodoro/app/core/styles/text_styles.dart';
 import 'package:pomodoro/app/core/utils/navigator_routes.dart';
 import 'package:pomodoro/app/core/widgets/button.dart';
+import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -15,6 +17,9 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    final emailEC = TextEditingController();
+    final passwordEC = TextEditingController();
+    
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       
@@ -64,6 +69,7 @@ class _LoginState extends State<Login> {
                               TextFormField(
                                 style: TextStyles().formText,
                                 keyboardType: TextInputType.text,
+                                controller: emailEC,
                             
                                 decoration: const InputDecoration(
                                   label: Text('E-Mail'),
@@ -78,6 +84,7 @@ class _LoginState extends State<Login> {
                                 style: TextStyles().formText,
                                 keyboardType: TextInputType.text,
                                 obscureText: isVisibility,
+                                controller: passwordEC,
                                 
                                 decoration: InputDecoration(
                                   label: const Text('Senha'),
@@ -118,7 +125,17 @@ class _LoginState extends State<Login> {
                           mainAxisAlignment: MainAxisAlignment.end,
 
                           children: [
-                            Button(action: () {}, title: 'Entrar'),
+                            Consumer<UserControllerImpl>(
+                              builder: (context, user, child) => Button(
+                                action: () {
+                                  user.login(
+                                    emailEC.text,
+                                    passwordEC.text,
+                                  );
+                                },
+                                title: 'Entrar',
+                              ),
+                            ),
                             
                             TextButton(
                               child: Text(
