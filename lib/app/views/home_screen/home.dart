@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Consumer<UserControllerImpl>(
         builder: (context, user, child) => Center(
-          child: Text(user.userName),
+          child: Text(user.user),
         ),
       ),
     );

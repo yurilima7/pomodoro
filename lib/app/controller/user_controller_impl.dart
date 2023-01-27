@@ -9,12 +9,13 @@ import 'package:pomodoro/app/models/user.dart';
 import './user_controller.dart';
 
 class UserControllerImpl with ChangeNotifier implements UserController {
-  String emailUser = '', userName = '';
-  int idUser = 0;
+  String _emailUser = '';
+  String _userName = '';
+  int  _idUser = 0;
 
-  String get email => emailUser;
-  String get user => userName;
-  int get id => idUser;
+  String get email => _emailUser;
+  String get user => _userName;
+  int get id =>  _idUser;
 
   @override
   Future<void> deleteUser(int id) async {
@@ -42,9 +43,9 @@ class UserControllerImpl with ChangeNotifier implements UserController {
         'email': data.email,
       });
 
-      emailUser = data.email;
-      userName = data.userName;
-      idUser = data.id!;
+      _emailUser = data.email;
+      _userName = data.userName;
+       _idUser = data.id!;
 
       NavigatorRoutes().homeScreen();
       
@@ -65,9 +66,9 @@ class UserControllerImpl with ChangeNotifier implements UserController {
   Future<void> registerUser(
       String email, String password, String userName) async {
         
-    final user = User(userName: userName, email: email, password: password,);
+    final userData = User(userName: userName, email: email, password: password,);
     try {
-      await DbPomodoro.db.insert('users', user.toMap());
+      await DbPomodoro.db.insert('users', userData.toMap());
       NavigatorRoutes().loginScreen();
     } on Exception catch (e) {
       log(e.toString());
@@ -76,20 +77,20 @@ class UserControllerImpl with ChangeNotifier implements UserController {
 
   @override
   Future<void> updateUser(
-      String email, String password, String user, int id) async {
+      String email, String password, String userName, int id) async {
       
-    final userData = User(userName: user, email: email, password: password);
+    final userData = User(userName: userName, email: email, password: password);
     try {
       await DbPomodoro.db.update('users', id, userData.toMap());
       Data.saveMap('userData', {
         'idUser': id,
-        'userName': user,
+        'userName': userName,
         'email': email,
       });
 
-      emailUser = email;
-      userName = user;
-      idUser = id;
+      _emailUser = email;
+      _userName = userName;
+       _idUser = id;
     } catch (e) {
       log(e.toString());
     }
@@ -98,17 +99,17 @@ class UserControllerImpl with ChangeNotifier implements UserController {
   }
 
   Future<bool> isConnected() async {
-    final user = await Data.getMap('userData');
+    final userData = await Data.getMap('userData');
 
-    if (user.isEmpty) {
+    if (userData.isEmpty) {
       return false;
     }
 
-    final data = User.fromMap(user);
+    final data = User.fromMap(userData);
 
-    emailUser = data.email;
-    userName = data.userName;
-    idUser = data.id!;
+    _emailUser = data.email;
+    _userName = data.userName;
+    _idUser = data.id!;
 
     notifyListeners();
     return true;
