@@ -29,6 +29,8 @@ class TextStyles {
     fontWeight: FontWeight.w700,
   );
 
+  TextStyle get errorText => TextStyle(color: ColorsStyles.error);
+
   TextStyle get buttonTitle => primaryBold.copyWith(
     fontSize: 24,
   );

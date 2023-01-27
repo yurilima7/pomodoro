@@ -4,6 +4,7 @@ import 'package:pomodoro/app/core/styles/text_styles.dart';
 import 'package:pomodoro/app/core/utils/navigator_routes.dart';
 import 'package:pomodoro/app/core/widgets/button.dart';
 import 'package:provider/provider.dart';
+import 'package:validatorless/validatorless.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -13,12 +14,20 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool isVisibility = true;
+  bool _isVisibility = false;
+  final formKey = GlobalKey<FormState>();
+  final emailEC = TextEditingController();
+  final passwordEC = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
-    final emailEC = TextEditingController();
-    final passwordEC = TextEditingController();
+  void dispose() {
+    emailEC.dispose();
+    passwordEC.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {   
     
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -61,63 +70,81 @@ class _LoginState extends State<Login> {
     
                         Expanded(
                           flex: 3,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            
-                            children: [
-                              TextFormField(
-                                style: TextStyles().formText,
-                                keyboardType: TextInputType.text,
-                                controller: emailEC,
-                            
-                                decoration: const InputDecoration(
-                                  label: Text('E-Mail'),
-                                  hintText: 'Digite seu e-mail',
-                                  prefixIcon: Icon(Icons.email_outlined, size: 32,),
-                                ),
-                              ),
-                            
-                              const SizedBox(height: 10.0,),
-                            
-                              TextFormField(
-                                style: TextStyles().formText,
-                                keyboardType: TextInputType.text,
-                                obscureText: isVisibility,
-                                controller: passwordEC,
-                                
-                                decoration: InputDecoration(
-                                  label: const Text('Senha'),
-                                  hintText: 'Digite sua senha',
-                                  prefixIcon: const Icon(
-                                    Icons.login_outlined,
-                                    size: 32,
+                          child: Form(
+                            key: formKey,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              
+                              children: [
+                                TextFormField(
+                                  style: TextStyles().formText,
+                                  keyboardType: TextInputType.text,
+                                  controller: emailEC,
+                              
+                                  decoration: const InputDecoration(
+                                    label: Text('E-Mail'),
+                                    hintText: 'Digite seu e-mail',
+                                    prefixIcon: Icon(Icons.email_outlined, size: 32,),
                                   ),
-                                  suffixIcon: IconButton(
-                                    icon: Icon(
-                                      isVisibility? Icons.visibility_off_outlined
-                                      : Icons.visibility_outlined,
+
+                                  validator: Validatorless.multiple([
+                                    Validatorless.required('Obrigatório!'),
+                                    Validatorless.email('E-Mail inválido!'),
+                                  ]),
+                                ),
+                              
+                                const SizedBox(height: 10.0,),
+                              
+                                TextFormField(
+                                  style: TextStyles().formText,
+                                  keyboardType: TextInputType.text,
+                                  obscureText: !_isVisibility,
+                                  controller: passwordEC,
+                                  
+                                  decoration: InputDecoration(
+                                    label: const Text('Senha'),
+                                    hintText: 'Digite sua senha',
+
+                                    prefixIcon: const Icon(
+                                      Icons.login_outlined,
                                       size: 32,
                                     ),
-                            
-                                    onPressed: () => setState(() {
-                                      isVisibility = !isVisibility;
-                                    }),
-                                  ),
-                                  
-                                ),
-                              ),
-                            
-                              const SizedBox(height: 10.0,),
+
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        !_isVisibility? Icons.visibility_off_outlined
+                                        : Icons.visibility_outlined,
+                                        size: 32,
+                                      ),
                               
-                              TextButton(
-                                child: Text(
-                                  'Esqueci a senha',
-                                  style: TextStyles().formText,
-                                ),        
-                                onPressed: () {},
-                              ),
-                            ],
+                                      onPressed: () => setState(() {
+                                        _isVisibility = !_isVisibility;
+                                      }),
+                                    ),
+                                    
+                                  ),
+
+                                  validator: Validatorless.multiple([
+                                    Validatorless.required('Obrigatório!'),
+                                    Validatorless.min(
+                                      8,
+                                      'Senha deve conter oito caracteres',
+                                    ),
+                                  ]),
+                                ),
+                              
+                                const SizedBox(height: 10.0,),
+                                
+                                TextButton(
+                                  child: Text(
+                                    'Esqueci a senha',
+                                    style: TextStyles().formText,
+                                  ),        
+                                  onPressed: () {},
+                                ),
+                              ],
+                            ),
                           ),
                         ),
     
@@ -128,10 +155,13 @@ class _LoginState extends State<Login> {
                             Consumer<UserControllerImpl>(
                               builder: (context, user, child) => Button(
                                 action: () {
-                                  user.login(
-                                    emailEC.text,
-                                    passwordEC.text,
-                                  );
+                                  final valid = formKey.currentState?.validate() ?? false;
+                                  if (valid) {
+                                    user.login(
+                                      emailEC.text,
+                                      passwordEC.text,
+                                    );
+                                  }
                                 },
                                 title: 'Entrar',
                               ),

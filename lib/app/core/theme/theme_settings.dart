@@ -39,8 +39,17 @@ class ThemeSettings {
         ),
       ),
 
+     errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20.0),
+        borderSide: BorderSide(
+          width: 3,
+          color: ColorsStyles.error,
+        ),
+     ), 
+
       prefixIconColor: ColorsStyles.white,
       suffixIconColor: ColorsStyles.white,
+      errorStyle: TextStyles().errorText,
     ),
 
     cardTheme: CardTheme(
