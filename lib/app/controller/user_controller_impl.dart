@@ -12,10 +12,12 @@ class UserControllerImpl with ChangeNotifier implements UserController {
   String _emailUser = '';
   String _userName = '';
   int  _idUser = 0;
+  bool _auth = false;
 
   String get email => _emailUser;
   String get user => _userName;
-  int get id =>  _idUser;
+  int get id => _idUser;
+  bool get isAuth => _auth;
 
   @override
   Future<void> deleteUser(int id) async {
@@ -38,7 +40,7 @@ class UserControllerImpl with ChangeNotifier implements UserController {
       final data = User.fromMap(user.first);
 
       Data.saveMap('userData', {
-        'idUser': data.id,
+        'id': data.id,
         'userName': data.userName,
         'email': data.email,
       });
@@ -83,7 +85,7 @@ class UserControllerImpl with ChangeNotifier implements UserController {
     try {
       await DbPomodoro.db.update('users', id, userData.toMap());
       Data.saveMap('userData', {
-        'idUser': id,
+        'id': id,
         'userName': userName,
         'email': email,
       });
@@ -98,20 +100,18 @@ class UserControllerImpl with ChangeNotifier implements UserController {
     notifyListeners();
   }
 
-  Future<bool> isConnected() async {
+  Future<void> isConnected() async {
     final userData = await Data.getMap('userData');
 
     if (userData.isEmpty) {
-      return false;
+      return ;
     }
 
-    final data = User.fromMap(userData);
+    _emailUser = userData['email'];
+    _userName = userData['userName'];
+    _idUser = userData['id'];
+    _idUser > 0? _auth = true : _auth = false;
 
-    _emailUser = data.email;
-    _userName = data.userName;
-    _idUser = data.id!;
-
-    notifyListeners();
-    return true;
+    notifyListeners(); 
   }
 }

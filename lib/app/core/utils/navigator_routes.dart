@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:pomodoro/app/core/utils/app_routes.dart';
 import 'package:pomodoro/app/pomodoro.dart';
 
