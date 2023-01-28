@@ -39,13 +39,21 @@ class ThemeSettings {
         ),
       ),
 
-     errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20.0),
-        borderSide: BorderSide(
-          width: 3,
-          color: ColorsStyles.error,
-        ),
-     ), 
+      errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.0),
+          borderSide: BorderSide(
+            width: 3,
+            color: ColorsStyles.error,
+          ),
+      ), 
+
+      focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.0),
+          borderSide: BorderSide(
+            width: 3,
+            color: ColorsStyles.error,
+          ),
+      ),
 
       prefixIconColor: ColorsStyles.white,
       suffixIconColor: ColorsStyles.white,
