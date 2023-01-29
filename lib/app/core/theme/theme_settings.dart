@@ -70,6 +70,16 @@ class ThemeSettings {
       elevation: 0,    
     ),
 
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: ColorsStyles.primary,
+      unselectedItemColor: ColorsStyles.white,
+      selectedItemColor: ColorsStyles.secondary,
+      selectedIconTheme: const IconThemeData(size: 32),
+      unselectedIconTheme: const IconThemeData(size: 32),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+    ),
+
     scaffoldBackgroundColor: ColorsStyles.primary,
   );
 }
