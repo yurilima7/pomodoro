@@ -62,7 +62,7 @@ class _StartState extends State<Start> {
                           children: [
                             Text(
                               titles[i],
-                              style: TextStyles.i.title,
+                              style: context.textStyles.title,
                               textAlign: TextAlign.center,
                             ),
                           ],

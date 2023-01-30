@@ -20,7 +20,7 @@ class _UserDataState extends State<UserData> {
             Icon(
               Icons.account_circle_outlined,
               size: 50,
-              color: ColorsApp.i.white,
+              color: context.colors.white,
             ),
             const SizedBox(
               width: 5,
@@ -30,11 +30,11 @@ class _UserDataState extends State<UserData> {
               children: [
                 Text(
                   'Nome',
-                  style: TextStyles.i.titleSecondary,
+                  style: context.textStyles.titleSecondary,
                 ),
                 Text(
                   'Que seu dia seja muito produtivo!',
-                  style: TextStyles.i.litteText,
+                  style: context.textStyles.litteText,
                 ),
               ],
             ),
@@ -45,7 +45,7 @@ class _UserDataState extends State<UserData> {
           child: Icon(
             Icons.more_vert,
             size: 32,
-            color: ColorsApp.i.white,
+            color: context.colors.white,
           ),
         ),
       ],

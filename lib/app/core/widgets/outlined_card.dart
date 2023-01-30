@@ -11,12 +11,12 @@ class OutlinedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: ColorsApp.i.primary,
+      color: context.colors.primary,
 
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
         side: BorderSide(
-          color: ColorsApp.i.secondary,
+          color: context.colors.secondary,
           width: 3
         ),
       ),
@@ -26,17 +26,17 @@ class OutlinedCard extends StatelessWidget {
           ListTile(
             title: Text(
               title,
-              style: TextStyles.i.cardTitle,
+              style: context.textStyles.cardTitle,
             ),
 
             subtitle: Text(
               subtitle,
-              style: TextStyles.i.litteText,
+              style: context.textStyles.litteText,
             ),
 
             trailing: Icon(
               Icons.pause_circle,
-              color: ColorsApp.i.secondary,
+              color: context.colors.secondary,
               size: 40,
             ),
           ),

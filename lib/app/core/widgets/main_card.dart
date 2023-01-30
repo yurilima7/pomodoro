@@ -15,12 +15,12 @@ class MainCard extends StatelessWidget {
           ListTile(
             title: Text(
               title,
-              style: TextStyles.i.cardTitle,
+              style: context.textStyles.cardTitle,
             ),
 
             subtitle: Text(
               subtitle,
-              style: TextStyles.i.litteText,
+              style: context.textStyles.litteText,
             ),
           ),
         ],

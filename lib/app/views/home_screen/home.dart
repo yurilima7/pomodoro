@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
                                       'Atividade atual',
-                                      style: TextStyles.i.titleTertiary,
+                                      style: context.textStyles.titleTertiary,
                                     ),
                                   ),
                                 ],

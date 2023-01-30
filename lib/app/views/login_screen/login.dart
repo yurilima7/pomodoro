@@ -62,7 +62,7 @@ class _LoginState extends State<Login> {
                             children: [
                               Text(
                                 'Seja Bem-Vindo',
-                                style: TextStyles.i.title,
+                                style: context.textStyles.title,
                               ),
                             ],
                           ),
@@ -78,7 +78,7 @@ class _LoginState extends State<Login> {
                               
                               children: [
                                 TextFormField(
-                                  style: TextStyles.i.formText,
+                                  style: context.textStyles.formText,
                                   keyboardType: TextInputType.text,
                                   controller: emailEC,
                               
@@ -97,7 +97,7 @@ class _LoginState extends State<Login> {
                                 const SizedBox(height: 10.0,),
                               
                                 TextFormField(
-                                  style: TextStyles.i.formText,
+                                  style: context.textStyles.formText,
                                   keyboardType: TextInputType.text,
                                   obscureText: !_isVisibility,
                                   controller: passwordEC,
@@ -139,7 +139,7 @@ class _LoginState extends State<Login> {
                                 TextButton(
                                   child: Text(
                                     'Esqueci a senha',
-                                    style: TextStyles.i.formText,
+                                    style: context.textStyles.formText,
                                   ),        
                                   onPressed: () {},
                                 ),
@@ -170,7 +170,7 @@ class _LoginState extends State<Login> {
                             TextButton(
                               child: Text(
                                 'Crie uma conta',
-                                style: TextStyles.i.formText,
+                                style: context.textStyles.formText,
                               ),        
                               onPressed: () => NavigatorRoutes().registerScreen(),
                             ),

@@ -22,13 +22,13 @@ class _DayActivitiesState extends State<DayActivities> {
             children: [
               Text(
                 'Atividades do dia',
-                style: TextStyles.i.titleTertiary,
+                style: context.textStyles.titleTertiary,
               ),
               InkWell(
                 onTap: (){},
                 child: Text(
                   'Ver todas',
-                  style: TextStyles.i.litteTextBold,
+                  style: context.textStyles.litteTextBold,
                 ),
               ),
             ],
