@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/core/styles/text_styles.dart';
 import 'package:pomodoro/app/core/widgets/bar.dart';
-import 'package:pomodoro/app/views/home_screen/widgets/current_activity.dart';
+import 'package:pomodoro/app/core/widgets/outlined_card.dart';
 import 'package:pomodoro/app/views/home_screen/widgets/day_activities.dart';
 import 'package:pomodoro/app/views/home_screen/widgets/user_data.dart';
 
@@ -34,7 +35,24 @@ class Home extends StatelessWidget {
 
                         Container(
                           margin: EdgeInsets.only(bottom: constraints.maxHeight * .06),
-                          child: const CurrentActivity(),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Atividade atual',
+                                      style: TextStyles.i.titleTertiary,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const OutlinedCard(title: 'title', subtitle: 'subtitle'),
+                            ],
+                          ),
                         ),
 
                         const DayActivities(),

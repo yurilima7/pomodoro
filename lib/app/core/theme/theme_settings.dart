@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro/app/core/styles/colors_styles.dart';
+import 'package:pomodoro/app/core/styles/colors_app.dart';
 import 'package:pomodoro/app/core/styles/text_styles.dart';
 
 class ThemeSettings {
   ThemeSettings._();
 
   static final theme = ThemeData(
-    colorScheme: ColorScheme.fromSwatch().copyWith(
-      primary: ColorsStyles.primary,
-      secondary: ColorsStyles.secondary,
-      tertiary: ColorsStyles.tertiary,
+    primaryColor: ColorsApp.i.primary,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: ColorsApp.i.primary,
+      primary: ColorsApp.i.primary,
+      secondary: ColorsApp.i.secondary,
+      tertiary: ColorsApp.i.tertiary,
     ),
 
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: ColorsStyles.white,
-      selectionHandleColor: ColorsStyles.white,
-      selectionColor: ColorsStyles.select,
+      cursorColor: ColorsApp.i.white,
+      selectionHandleColor: ColorsApp.i.white,
+      selectionColor: ColorsApp.i.select,
     ),
 
     inputDecorationTheme: InputDecorationTheme(
-      labelStyle: TextStyles().formText,
-      hintStyle: TextStyles().litteText,
+      labelStyle: TextStyles.i.formText,
+      hintStyle: TextStyles.i.litteText,
       floatingLabelBehavior: FloatingLabelBehavior.never,
 
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(20.0),
         borderSide: BorderSide(
           width: 3,
-          color: ColorsStyles.secondary,
+          color: ColorsApp.i.secondary,
         ),
       ),
 
@@ -35,7 +37,7 @@ class ThemeSettings {
         borderRadius: BorderRadius.circular(20.0),
         borderSide: BorderSide(
           width: 3,
-          color: ColorsStyles.secondary,
+          color: ColorsApp.i.secondary,
         ),
       ),
 
@@ -43,7 +45,7 @@ class ThemeSettings {
           borderRadius: BorderRadius.circular(20.0),
           borderSide: BorderSide(
             width: 3,
-            color: ColorsStyles.error,
+            color: ColorsApp.i.error,
           ),
       ), 
 
@@ -51,17 +53,17 @@ class ThemeSettings {
           borderRadius: BorderRadius.circular(20.0),
           borderSide: BorderSide(
             width: 3,
-            color: ColorsStyles.error,
+            color: ColorsApp.i.error,
           ),
       ),
 
-      prefixIconColor: ColorsStyles.white,
-      suffixIconColor: ColorsStyles.white,
-      errorStyle: TextStyles().errorText,
+      prefixIconColor: ColorsApp.i.white,
+      suffixIconColor: ColorsApp.i.white,
+      errorStyle: TextStyles.i.errorText,
     ),
 
     cardTheme: CardTheme(
-      color: ColorsStyles.secondary,
+      color: ColorsApp.i.secondary,
       elevation: 5,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
     ),
@@ -71,15 +73,15 @@ class ThemeSettings {
     ),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: ColorsStyles.primary,
-      unselectedItemColor: ColorsStyles.white,
-      selectedItemColor: ColorsStyles.secondary,
+      backgroundColor: ColorsApp.i.primary,
+      unselectedItemColor: ColorsApp.i.white,
+      selectedItemColor: ColorsApp.i.secondary,
       selectedIconTheme: const IconThemeData(size: 32),
       unselectedIconTheme: const IconThemeData(size: 32),
       showSelectedLabels: false,
       showUnselectedLabels: false,
     ),
 
-    scaffoldBackgroundColor: ColorsStyles.primary,
+    scaffoldBackgroundColor: ColorsApp.i.primary,
   );
 }

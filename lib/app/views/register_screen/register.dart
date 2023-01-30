@@ -64,7 +64,7 @@ class _RegisterState extends State<Register> {
                             children: [
                               Text(
                                 'Crie uma conta',
-                                style: TextStyles().title,
+                                style: TextStyles.i.title,
                               ),
                             ],
                           ),
@@ -80,7 +80,7 @@ class _RegisterState extends State<Register> {
                               
                               children: [
                                 TextFormField(
-                                  style: TextStyles().formText,
+                                  style: TextStyles.i.formText,
                                   keyboardType: TextInputType.text,
                                   controller: userNameEC,
                               
@@ -101,7 +101,7 @@ class _RegisterState extends State<Register> {
                                 const SizedBox(height: 10.0,),
                           
                                 TextFormField(
-                                  style: TextStyles().formText,
+                                  style: TextStyles.i.formText,
                                   keyboardType: TextInputType.text,
                                   controller: emailEC,
                               
@@ -120,7 +120,7 @@ class _RegisterState extends State<Register> {
                                 const SizedBox(height: 10.0,),
                               
                                 TextFormField(
-                                  style: TextStyles().formText,
+                                  style: TextStyles.i.formText,
                                   keyboardType: TextInputType.text,
                                   obscureText: !_isVisibility,
                                   controller: passwordEC,
@@ -181,7 +181,7 @@ class _RegisterState extends State<Register> {
                             TextButton(
                               child: Text(
                                 'Possui uma conta? Entre agora',
-                                style: TextStyles().formText,
+                                style: TextStyles.i.formText,
                               ),        
                               onPressed: () => NavigatorRoutes().loginScreen(),
                             ),

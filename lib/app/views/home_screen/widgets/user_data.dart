@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro/app/core/styles/colors_styles.dart';
+import 'package:pomodoro/app/core/styles/colors_app.dart';
 import 'package:pomodoro/app/core/styles/text_styles.dart';
 
 class UserData extends StatefulWidget {
@@ -20,7 +20,7 @@ class _UserDataState extends State<UserData> {
             Icon(
               Icons.account_circle_outlined,
               size: 50,
-              color: ColorsStyles.white,
+              color: ColorsApp.i.white,
             ),
             const SizedBox(
               width: 5,
@@ -30,11 +30,11 @@ class _UserDataState extends State<UserData> {
               children: [
                 Text(
                   'Nome',
-                  style: TextStyles().titleSecondary,
+                  style: TextStyles.i.titleSecondary,
                 ),
                 Text(
                   'Que seu dia seja muito produtivo!',
-                  style: TextStyles().litteText,
+                  style: TextStyles.i.litteText,
                 ),
               ],
             ),
@@ -45,7 +45,7 @@ class _UserDataState extends State<UserData> {
           child: Icon(
             Icons.more_vert,
             size: 32,
-            color: ColorsStyles.white,
+            color: ColorsApp.i.white,
           ),
         ),
       ],
