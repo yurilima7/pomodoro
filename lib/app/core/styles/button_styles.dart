@@ -3,6 +3,14 @@ import 'package:pomodoro/app/core/styles/colors_app.dart';
 import 'package:pomodoro/app/core/styles/text_styles.dart';
 
 class ButtonStyles {
+  static ButtonStyles? _instance;
+
+  ButtonStyles._();
+  static ButtonStyles get i {
+    _instance ??= ButtonStyles._();
+    return _instance!;
+  }
+
   ButtonStyle get button => ElevatedButton.styleFrom(
     backgroundColor: ColorsApp.i.secondary,
     shape: RoundedRectangleBorder(
@@ -27,4 +35,8 @@ class ButtonStyles {
     ),
     textStyle: TextStyles.i.buttonTitle,
   );
+}
+
+extension ButtonStyleExtensions on BuildContext {
+  ButtonStyles get buttons => ButtonStyles.i;
 }

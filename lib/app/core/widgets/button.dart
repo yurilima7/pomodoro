@@ -10,7 +10,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ButtonStyles().button,
+      style: context.buttons.button,
       onPressed: action,
       child: Text(title),
     );

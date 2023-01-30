@@ -24,7 +24,7 @@ class OptionsButtons extends StatelessWidget {
       children: [
         Expanded(
           child: ElevatedButton(
-            style: ButtonStyles().optButtonCancel,
+            style: context.buttons.optButtonCancel,
             onPressed: () {},
 
             child: Padding(
@@ -36,7 +36,7 @@ class OptionsButtons extends StatelessWidget {
 
         Expanded(
           child: ElevatedButton(
-            style: ButtonStyles().optButton,
+            style: context.buttons.optButton,
             onPressed: () {},
             
             child: Padding(
