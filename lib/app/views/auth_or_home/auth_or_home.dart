@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/app/controller/user_controller_impl.dart';
-import 'package:pomodoro/app/views/home_screen/home.dart';
+import 'package:pomodoro/app/views/bar.dart';
 import 'package:pomodoro/app/views/start_screen/start.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +36,7 @@ class _AuthOrHomeState extends State<AuthOrHome> {
                 child: Text('Ocorreu um erro!'),
               );
             } else {
-              return _future.isAuth ? const Home() : const Start();
+              return _future.isAuth ? const Bar() : const Start();
             }
           },
         ),
