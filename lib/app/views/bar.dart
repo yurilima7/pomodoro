@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/core/styles/text_styles.dart';
 import 'package:pomodoro/app/views/activities_screen/activities.dart';
 import 'package:pomodoro/app/views/add_screen/add_activity.dart';
 import 'package:pomodoro/app/views/home_screen/home.dart';
@@ -28,7 +29,10 @@ class _BarState extends State<Bar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_screen[_selectedIndex]['titulo']),
+        title: Text(
+          _screen[_selectedIndex]['titulo'],
+          style: context.textStyles.titleSecondary,
+        ),
       ),
 
       body: _screen[_selectedIndex]['screen'],
