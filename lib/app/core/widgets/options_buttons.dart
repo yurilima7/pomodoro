@@ -34,6 +34,8 @@ class OptionsButtons extends StatelessWidget {
           ),
         ),
 
+        const SizedBox(width: 11,),
+
         Expanded(
           child: ElevatedButton(
             style: context.buttons.optButton,
@@ -41,7 +43,7 @@ class OptionsButtons extends StatelessWidget {
             
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(title),
+              child: Text(title2),
             ),
           ),
         ),

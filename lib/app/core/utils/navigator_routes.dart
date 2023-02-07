@@ -15,4 +15,11 @@ class NavigatorRoutes {
       (route) => false,
     );
   }
+
+  void homeScreen() {
+    navigatorKey.currentState!.pushNamedAndRemoveUntil(
+      AppRoutes.authOrHome,
+      (route) => false,
+    );
+  }
 }
