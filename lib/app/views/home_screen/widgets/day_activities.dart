@@ -40,9 +40,12 @@ class _DayActivitiesState extends State<DayActivities> {
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: 4,
-            itemBuilder: (_, i) => const MainCard(
-              title: 'title',
-              subtitle: 'subtitle',
+            itemBuilder: (_, i) => InkWell(
+              onTap: () => Navigator.of(context).pushNamed('/activity_details.dart'),
+              child: const MainCard(
+                title: 'title',
+                subtitle: 'subtitle',
+              ),
             ),
           ),
         ),

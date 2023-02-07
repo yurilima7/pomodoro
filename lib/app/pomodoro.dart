@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pomodoro/app/controller/user_controller_impl.dart';
 import 'package:pomodoro/app/core/theme/theme_settings.dart';
 import 'package:pomodoro/app/core/utils/app_routes.dart';
+import 'package:pomodoro/app/views/activity_details_screen/activity_details.dart';
 import 'package:pomodoro/app/views/auth_or_home/auth_or_home.dart';
 import 'package:pomodoro/app/views/login_screen/login.dart';
 import 'package:pomodoro/app/views/register_screen/register.dart';
@@ -30,6 +31,7 @@ class Pomodoro extends StatelessWidget {
           AppRoutes.startScreen:(context) => const Start(),
           AppRoutes.loginScreen:(context) => const Login(),
           AppRoutes.registerScreen:(context) => const Register(),
+          AppRoutes.activityDetailsScreen:(context) => const ActivityDetails(),
         },
       ),
     );
