@@ -46,6 +46,7 @@ class ActivityControllerImpl with ChangeNotifier implements ActivityController {
     try {
       final activities = await DbPomodoro.db.getData('activities');
       _activities = activities.map<Activity>((e) => Activity.fromMap(e)).toList();
+      notifyListeners();
     } catch (e) {
       log(e.toString());
     }

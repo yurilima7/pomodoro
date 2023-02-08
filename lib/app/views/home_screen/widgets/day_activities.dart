@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/controller/activity_controller_impl.dart';
 import 'package:pomodoro/app/core/styles/text_styles.dart';
 import 'package:pomodoro/app/core/widgets/main_card.dart';
+import 'package:provider/provider.dart';
 
 class DayActivities extends StatefulWidget {
   const DayActivities({Key? key}) : super(key: key);
@@ -36,16 +38,25 @@ class _DayActivitiesState extends State<DayActivities> {
         ),
         SizedBox(
           height: 320,
-          child: ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 4,
-            itemBuilder: (_, i) => InkWell(
-              onTap: () => Navigator.of(context).pushNamed('/activity_details.dart'),
-              child: const MainCard(
-                title: 'title',
-                subtitle: 'subtitle',
+          child: Consumer<ActivityControllerImpl>(
+            builder: (context, activity, child) => activity.activities.isNotEmpty
+            ? ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 4,
+              itemBuilder: (_, i) => InkWell(
+                onTap: () => Navigator.of(context).pushNamed('/activity_details.dart'),
+                child: MainCard(
+                  title: activity.activities[i].name,
+                  subtitle: 'subtitle',
+                ),
               ),
+            ) 
+            : Center(
+                child: Text(
+                  'Sem atividades no momento',
+                  style: context.textStyles.titleSecondary,
+                ),
             ),
           ),
         ),
