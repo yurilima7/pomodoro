@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/controller/user_controller_impl.dart';
 import 'package:pomodoro/app/core/styles/colors_app.dart';
 import 'package:pomodoro/app/core/styles/text_styles.dart';
+import 'package:provider/provider.dart';
 
 class UserData extends StatefulWidget {
   const UserData({Key? key}) : super(key: key);
@@ -28,9 +30,11 @@ class _UserDataState extends State<UserData> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Nome',
-                  style: context.textStyles.titleSecondary,
+                Consumer<UserControllerImpl>(
+                  builder: (context, user, child) => Text(
+                    'Olá, ${user.user}',
+                    style: context.textStyles.titleSecondary,
+                  ),
                 ),
                 Text(
                   'Que seu dia seja muito produtivo!',
