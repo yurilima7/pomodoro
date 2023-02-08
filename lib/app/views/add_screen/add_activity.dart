@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/controller/activity_controller_impl.dart';
 import 'package:pomodoro/app/core/styles/colors_app.dart';
+import 'package:pomodoro/app/core/styles/text_styles.dart';
 import 'package:pomodoro/app/core/widgets/options_buttons.dart';
 import 'package:pomodoro/app/views/add_screen/widgets/card_selection.dart';
+import 'package:provider/provider.dart';
+import 'package:validatorless/validatorless.dart';
 class AddActivity extends StatefulWidget {
   const AddActivity({super.key});
 
@@ -24,6 +28,8 @@ class _AddActivityState extends State<AddActivity> {
   ];
 
   String focusValue = '25', pauseValue = '5', intervalValue = '4';
+  final nameActivityEC = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +52,17 @@ class _AddActivityState extends State<AddActivity> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TextFormField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: context.colors.secondary,
-                              labelText: 'Nome da atividade',
+                          Form(
+                            key: formKey,
+                            child: TextFormField(
+                              controller: nameActivityEC,
+                              style: context.textStyles.formText,
+                              validator: Validatorless.required('Obrigatório!'),
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: context.colors.secondary,
+                                labelText: 'Nome da atividade',
+                              ),
                             ),
                           ),
                           
@@ -95,11 +107,25 @@ class _AddActivityState extends State<AddActivity> {
                              height: 140,
                           ),
 
-                          OptionsButtons(
-                            action: () {},
-                            action2: () {},
-                            title: 'Cancelar',
-                            title2: 'Salvar',
+                          Consumer<ActivityControllerImpl>(
+                            builder: (context, activity, child) => OptionsButtons(
+                              action: () {},
+                              action2: () {
+                                final valid = formKey.currentState?.validate() 
+                                  ?? false;
+                          
+                                if (valid) {
+                                  activity.addActivity(
+                                    nameActivityEC.text,
+                                    focusValue,
+                                    pauseValue,
+                                    pauseValue,
+                                  );
+                                }
+                              },
+                              title: 'Cancelar',
+                              title2: 'Salvar',
+                            ),
                           ),
                         ],
                       ),

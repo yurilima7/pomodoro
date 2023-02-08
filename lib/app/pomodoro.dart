@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/controller/activity_controller_impl.dart';
 import 'package:pomodoro/app/controller/user_controller_impl.dart';
 import 'package:pomodoro/app/core/theme/theme_settings.dart';
 import 'package:pomodoro/app/core/utils/app_routes.dart';
@@ -18,14 +19,22 @@ class Pomodoro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => UserControllerImpl(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserControllerImpl(),
+        ),
+
+        ChangeNotifierProvider(
+          create: (_) => ActivityControllerImpl(),
+        ),
+      ],
       child: MaterialApp(
         navigatorKey: navigatorKey,
         scaffoldMessengerKey: scaffoldMessengerKey,
         theme: ThemeSettings.theme,
         debugShowCheckedModeBanner: false,
-    
+      
         routes: {
           AppRoutes.authOrHome:(context) => const AuthOrHome(),
           AppRoutes.startScreen:(context) => const Start(),
