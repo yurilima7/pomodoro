@@ -1,16 +1,28 @@
 # Pomodoro App
 
-A new Flutter project.
+## :memo: Descrição do Projeto
+<p>Aplicação desenvolvida com o objetivo de estudos de alguns recursos como: SQLite para gravar dados localmente e 
+shared prefereces para salvar dados específicos do usuário.</p>
 
-## Getting Started
+## :books: Funcionalidades
+* Registro simples de usuário na tabela de users do banco, mesmo sabendo que após limpeza/desinstalação do app a conta 
+  não ficará salva decidi manter
+* Login com base na busca do email e da senha no banco
+* CRUD das atividades do pomodoro na tabela de activities
+* Cronômetro com base no tempo de pomodoro estabelecido pelo usuário, assim como tempos para pausa e as quantidades de pausas
 
-This project is a starting point for a Flutter application.
+## :wrench: Tecnologias Utilizadas
+* Flutter
+* SQLite
 
-A few resources to get you started if this is your first Flutter project:
+## :computer: Bibliotecas e Ferramentas
+* Shared preferences
+* Provider
+* Sqlite
+* Percent indicator
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## :information_source: Como Usar
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Para executar corretamente esta aplicação você precisará:
+* Git e Node JS instalados
+* Flutter já configurado
