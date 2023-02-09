@@ -4,4 +4,5 @@ class AppRoutes {
   static const loginScreen = '/login.dart';
   static const registerScreen = '/register.dart';
   static const activityDetailsScreen = '/activity_details.dart';
+  static const updateActivityScreen = '/update_activity.dart';
 }

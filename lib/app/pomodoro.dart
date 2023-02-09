@@ -8,6 +8,7 @@ import 'package:pomodoro/app/views/auth_or_home/auth_or_home.dart';
 import 'package:pomodoro/app/views/login_screen/login.dart';
 import 'package:pomodoro/app/views/register_screen/register.dart';
 import 'package:pomodoro/app/views/start_screen/start.dart';
+import 'package:pomodoro/app/views/update_screen/update_activity.dart';
 import 'package:provider/provider.dart';
 
  GlobalKey <NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -41,6 +42,7 @@ class Pomodoro extends StatelessWidget {
           AppRoutes.loginScreen:(context) => const Login(),
           AppRoutes.registerScreen:(context) => const Register(),
           AppRoutes.activityDetailsScreen:(context) => const ActivityDetails(),
+          AppRoutes.updateActivityScreen:(context) => const UpdateActivity(),
         },
       ),
     );

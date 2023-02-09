@@ -22,7 +22,10 @@ class Activities extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: activity.activities.length,
                   itemBuilder: (_, i) => InkWell(
-                    onTap: () => Navigator.of(context).pushNamed('/activity_details.dart'),
+                              onTap: () => Navigator.of(context).pushNamed(
+                                '/activity_details.dart',
+                                arguments: activity.activities[i],
+                              ),
                     child: MainCard(
                       title: activity.activities[i].name,
                       subtitle: 'subtitle',

@@ -45,13 +45,16 @@ class _DayActivitiesState extends State<DayActivities> {
               shrinkWrap: true,
               itemCount: 4,
               itemBuilder: (_, i) => InkWell(
-                onTap: () => Navigator.of(context).pushNamed('/activity_details.dart'),
+                          onTap: () => Navigator.of(context).pushNamed(
+                            '/activity_details.dart',
+                            arguments: activity.activities[i],
+                          ),
                 child: MainCard(
                   title: activity.activities[i].name,
                   subtitle: 'subtitle',
                 ),
               ),
-            ) 
+            )
             : Center(
                 child: Text(
                   'Sem atividades no momento',

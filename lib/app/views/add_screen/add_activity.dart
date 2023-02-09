@@ -119,7 +119,7 @@ class _AddActivityState extends State<AddActivity> {
                                     nameActivityEC.text,
                                     focusValue,
                                     pauseValue,
-                                    pauseValue,
+                                    intervalValue,
                                   );
                                 }
                               },
