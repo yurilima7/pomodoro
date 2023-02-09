@@ -6,7 +6,7 @@ shared prefereces para salvar dados específicos do usuário.</p>
 
 ## :books: Funcionalidades
 * Registro simples de usuário na tabela de users do banco, mesmo sabendo que após limpeza/desinstalação do app a conta 
-  não ficará salva decidi manter
+  não ficará salva, mas decidi manter
 * Login com base na busca do email e da senha no banco
 * CRUD das atividades do pomodoro na tabela de activities
 * Cronômetro com base no tempo de pomodoro estabelecido pelo usuário, assim como tempos para pausa e as quantidades de pausas
