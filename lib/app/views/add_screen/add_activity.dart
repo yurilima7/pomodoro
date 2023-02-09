@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pomodoro/app/controller/activity_controller_impl.dart';
 import 'package:pomodoro/app/core/styles/colors_app.dart';
 import 'package:pomodoro/app/core/styles/text_styles.dart';
+import 'package:pomodoro/app/core/utils/app_routes.dart';
 import 'package:pomodoro/app/core/widgets/options_buttons.dart';
 import 'package:pomodoro/app/views/add_screen/widgets/card_selection.dart';
 import 'package:provider/provider.dart';
@@ -109,7 +110,11 @@ class _AddActivityState extends State<AddActivity> {
 
                           Consumer<ActivityControllerImpl>(
                             builder: (context, activity, child) => OptionsButtons(
-                              action: () {},
+                              action: () =>
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                AppRoutes.authOrHome,
+                                (route) => false,
+                              ),
                               action2: () {
                                 final valid = formKey.currentState?.validate() 
                                   ?? false;

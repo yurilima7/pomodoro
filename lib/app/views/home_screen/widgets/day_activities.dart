@@ -19,21 +19,9 @@ class _DayActivitiesState extends State<DayActivities> {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Atividades do dia',
-                style: context.textStyles.titleTertiary,
-              ),
-              InkWell(
-                onTap: (){},
-                child: Text(
-                  'Ver todas',
-                  style: context.textStyles.litteTextBold,
-                ),
-              ),
-            ],
+          child: Text(
+            'Atividades do dia',
+            style: context.textStyles.titleTertiary,
           ),
         ),
         SizedBox(

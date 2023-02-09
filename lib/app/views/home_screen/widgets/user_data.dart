@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pomodoro/app/controller/user_controller_impl.dart';
 import 'package:pomodoro/app/core/styles/colors_app.dart';
 import 'package:pomodoro/app/core/styles/text_styles.dart';
+import 'package:pomodoro/app/core/utils/app_routes.dart';
 import 'package:provider/provider.dart';
 
 class UserData extends StatefulWidget {
@@ -44,12 +45,20 @@ class _UserDataState extends State<UserData> {
             ),
           ],
         ),
-        InkWell(
-          onTap: () {},
-          child: Icon(
-            Icons.more_vert,
-            size: 32,
-            color: context.colors.white,
+        Consumer<UserControllerImpl>(
+          builder: (context, user, child) => InkWell(
+            onTap: () {
+              user.logout();
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                AppRoutes.loginScreen,
+                (route) => false,
+              );
+            },
+            child: Icon(
+              Icons.logout,
+              size: 32,
+              color: context.colors.white,
+            ),
           ),
         ),
       ],
